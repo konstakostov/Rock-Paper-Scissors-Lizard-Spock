@@ -1,10 +1,11 @@
 import random   # Random Number Generator
 from colorama import Fore, Style    # Adds color to the text
 
-print("Hello, this is 'Rock, Paper, Scissors, Lizard, Spock!'. The rules of the game are:")
-print("Scissors cut Paper. Paper covers Rock. Rock crushes Lizard. Lizard poisons Spock. Spock smashes Scissors")
-print("Scissors decapitate Lizard. Lizard eats Paper. Paper disproves Spock. Spock vaporizes Rock.")
-print("And as everybody knows - Rock crushes Scissors.")
+print("Hello, this is Dr. Sheldon Cooper and this is 'Rock, Paper, Scissors, Lizard, Spock!'")
+print("The rules of the game are: Scissors cut Paper. Paper covers Rock. Rock crushes Lizard. ")
+print("Lizard poisons Spock. Spock smashes Scissors. Scissors decapitate Lizard. Lizard eats Paper.")
+print("Paper disproves Spock. Spock vaporizes Rock. And as it always has - Rock crushes Scissors.")
+print("")
 print()
 print("Please, enter your name: ")
 name = input()  # Player Name
@@ -80,11 +81,11 @@ while new_game == "" or new_game == "y":
     # Rock Wins Scenarios
     if player_input == rock and (computer_input == scissors or computer_input == lizard):   # Player Wins
         print(f"{player_input} crushes {computer_input}.")
-        print(Fore.GREEN + "You Win!")
+        print(Fore.GREEN + "Oh... You Win this time.")
         wins += 1
     elif computer_input == rock and (player_input == scissors or player_input == lizard):   # Computer Wins
         print(f"{player_input} crushes {computer_input}.")
-        print(Fore.RED + "You Lose!")
+        print(Fore.RED + "Ha! You Lose!")
         losses += 1
 
     # Paper Wins Scenarios
@@ -93,14 +94,14 @@ while new_game == "" or new_game == "y":
             print(f"{player_input} covers {computer_input}.")
         elif computer_input == spock:
             print(f"{player_input} disproves {computer_input}.")
-        print(Fore.GREEN + "You Win!")
+        print(Fore.GREEN + "Oh... You Win this time.")
         wins += 1
     elif computer_input == paper and (player_input == rock or player_input == spock):   # Computer Wins
         if player_input == rock:
             print(f"{computer_input} covers {player_input}.")
         elif player_input == spock:
             print(f"{computer_input} disproves {player_input}.")
-        print(Fore.RED + "You Lose!")
+        print(Fore.RED + "Ha! You Lose!")
         losses += 1
 
     # Scissors Wins Scenarios:
@@ -109,14 +110,14 @@ while new_game == "" or new_game == "y":
             print(f"{player_input} cut {computer_input}.")
         elif computer_input == lizard:
             print(f"{player_input} decapitate {computer_input}.")
-        print(Fore.GREEN + "You Win!")
+        print(Fore.GREEN + "Oh... You Win this time.")
         wins += 1
     elif computer_input == scissors and (player_input == paper or player_input == lizard):   # Computer Wins
         if player_input == paper:
             print(f"{computer_input} cut {player_input}.")
         elif player_input == lizard:
             print(f"{computer_input} decapitate {player_input}.")
-        print(Fore.RED + "You Lose!")
+        print(Fore.RED + "Ha! You Lose!")
         losses += 1
 
     # Lizard Wins Scenarios:
@@ -125,14 +126,14 @@ while new_game == "" or new_game == "y":
             print(f"{player_input} poisons {computer_input}.")
         elif computer_input == paper:
             print(f"{player_input} eats {computer_input}.")
-        print(Fore.GREEN + "You Win!")
+        print(Fore.GREEN + "Oh... You Win this time.")
         wins += 1
     elif computer_input == lizard and (player_input == spock or player_input == paper):   # Computer Wins
         if player_input == spock:
             print(f"{computer_input} poisons {player_input}.")
         elif player_input == paper:
             print(f"{computer_input} eats {player_input}.")
-        print(Fore.RED + "You Lose!")
+        print(Fore.RED + "Ha! You Lose!")
         losses += 1
 
     # Spock Wins Scenarios:
@@ -141,25 +142,25 @@ while new_game == "" or new_game == "y":
             print(f"{player_input} smashes {computer_input}.")
         elif computer_input == rock:
             print(f"{player_input} vaporizes {computer_input}.")
-        print(Fore.GREEN + "You Win!")
+        print(Fore.GREEN + "Oh... You Win this time.")
         wins += 1
     elif computer_input == lizard and (player_input == spock or player_input == paper):   # Computer Wins
         if player_input == scissors:
             print(f"{computer_input} smashes {player_input}.")
         elif player_input == rock:
             print(f"{computer_input} vaporizes {player_input}.")
-        print(Fore.RED + "You Lose!")
+        print(Fore.RED + "Ha! You Lose!")
         losses += 1
 
     # Scenarios where both inputs result in a draw
     else:
-        print(Fore.BLUE + "It's a Draw!")
+        print(Fore.BLUE + "It's a Draw.")
         draws += 1
 
     print(Style.RESET_ALL)
 
     # Logic determining whether the game will continue or not
-    print("Do you want to play a new game?")
+    print("Let's play a new game.")
     new_game = ""
 
     # This loops reads the player choice to continue the game or not.
@@ -178,3 +179,13 @@ while new_game == "" or new_game == "y":
 # Final statistics for the game the player has played
 print(f"{name}, you played {rounds} rounds.")
 print(f"You have won {wins}, lost {losses} and {draws} resulted in a draw.")
+print()
+
+if wins > losses and wins > draws:
+    print(f"You cheated! There is no way you are that good!")
+elif losses > wins and losses > draws:
+    print(f"Ha. I knew this was an unfair fight. For you, of course.")
+elif wins == draws == losses:
+    print("It seems we have reached an impasse.")
+else:
+    print("Oh, come on! Don't go! I need to best you completely!")
